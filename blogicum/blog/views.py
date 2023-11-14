@@ -1,4 +1,3 @@
-from django.http import Http404
 from django.shortcuts import render
 
 posts = [
@@ -48,6 +47,7 @@ posts = [
 def index(request):
     context = {'posts': reversed(posts)}
     return render(request, 'blog/index.html', context)
+
 
 def post_detail(request, id):
     context = {'post': posts[id]}
