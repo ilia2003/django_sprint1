@@ -55,8 +55,7 @@ def index(request):
 def post_detail(request, post_id):
     if post_id in posts_id:
         return render(
-            request, 'blog/detail.html', {'posts': posts_id[post_id]}
-            )
+            request, 'blog/detail.html', {'posts': posts_id[post_id]})
     raise Http404('This page is unavailable now')
 
 
