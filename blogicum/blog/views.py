@@ -47,7 +47,6 @@ posts = [
 posts_id = {post['id']: post for post in posts}
 
 
-
 def index(request):
     context = {'posts': reversed(posts)}
     return render(request, 'blog/index.html', context)
@@ -55,7 +54,9 @@ def index(request):
 
 def post_detail(request, post_id):
     if post_id in posts_id:
-        return render(request, 'blog/detail.html', {'posts': posts_id[post_id]})
+        return render(
+            request, 'blog/detail.html', {'posts': posts_id[post_id]}
+            )
     raise Http404('This page is unavailable now')
 
 
