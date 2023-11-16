@@ -9,5 +9,7 @@
       <li>
         Категория: <a href="{% url 'blog:category_posts' post.category %}">{{post.category}}</a>
       </li>
+      <p>
+        {{post.text|truncatewords:10}}
+      </p>
     </ul>         
-</article>

@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 
 posts = [
@@ -43,15 +44,19 @@ posts = [
     },
 ]
 
+posts_id = {post['id']: post for post in posts}
+
+
 
 def index(request):
     context = {'posts': reversed(posts)}
     return render(request, 'blog/index.html', context)
 
 
-def post_detail(request, id):
-    context = {'post': posts[id]}
-    return render(request, 'blog/detail.html', context)
+def post_detail(request, post_id):
+    if post_id in posts_id:
+        return render(request, 'blog/detail.html', {'posts': posts_id[post_id]})
+    raise Http404('This page is unavailable now')
 
 
 def category_posts(request, category_slug):
