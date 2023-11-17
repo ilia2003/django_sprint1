@@ -1,15 +1,20 @@
 <article>
-    <ul>
-      <li>
-        Место: {{post.location}}
-      </li>
-      <li>
-        Дата: {{post.date}}
-      </li>
-      <li>
-        Категория: <a href="{% url 'blog:category_posts' post.category %}">{{post.category}}</a>
-      </li>
-      <p>
-        {{post.text|truncatewords:10}}
-      </p>
-    </ul>         
+  <ul>
+    <li>
+      Место: {{post.location}}
+    </li>
+    <li>
+      Дата: {{post.date}}
+    </li>
+    <li>
+      Категория: <a href="{% url 'blog:category_posts' post.category %}">{{post.category}}</a>
+    </li>
+    <p>
+      {% if index == "True" %}
+      {{post.text|truncatewords:10}}
+      {% else %}
+      {{post.text}}
+      {% endif %}
+    </p>
+  </ul>
+</article>  
