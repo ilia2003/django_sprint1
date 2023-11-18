@@ -13,6 +13,7 @@
       {% if index == "True" %}
       {{post.text|truncatewords:10}}
       {% else %}
+      <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
       {{post.text}}
       {% endif %}
     </p>
